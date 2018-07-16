@@ -10,7 +10,6 @@ class Walls {
       w = random(50, 300);
       h = random(10, 20);
       
-      
       walls[i] = new Wall(x, y, w, h);
     }
   }
@@ -24,9 +23,13 @@ class Walls {
     }
     return hit;
   }
-  
+  //x,y,w,h
+  //0, 300, 600, 10
   boolean hitWall(Dot d, Wall w){
-    if(d.pos.x < w.x && d.pos.y < w.y && d.pos.x > w.h && d.pos.y > w.w){
+    float dx = d.pos.x;
+    float dy = d.pos.y;
+    
+    if(dx > w.x-2 && dx < w.x+w.w+2 && dy > w.y-2 && dy < w.y+w.h+2){
       return true;
     }
     return false;

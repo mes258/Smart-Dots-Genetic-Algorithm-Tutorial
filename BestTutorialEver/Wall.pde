@@ -1,7 +1,7 @@
 class Wall {
   
   public float x, y, h, w;
-  Wall(float x, float y, float h, float w) {
+  Wall(float x, float y, float w, float h) {
     this.x = x;
     this.y = y;
     this.h = h;
@@ -10,7 +10,7 @@ class Wall {
   
   void show(){
     fill(0, 0, 255);
-    rect(x, y, h, w);
+    rect(x, y, w, h);
   }
   
   
