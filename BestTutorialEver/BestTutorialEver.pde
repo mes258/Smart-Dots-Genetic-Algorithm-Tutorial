@@ -1,14 +1,15 @@
 Population test;
 PVector goal  = new PVector(400, 10);
-
+Walls walls;
 
 void setup() {
   size(800, 800); //size of the window
-  frameRate(100);//increase this to make the dots go faster
-  test = new Population(1000);//create a new population with 1000 members
+  frameRate(200);//increase this to make the dots go faster
+  test = new Population(2000);//create a new population with 1000 members
+  walls = new Walls(10);
 }
 
-
+  int index = 0;
 void draw() { 
   background(255);
 
@@ -17,11 +18,9 @@ void draw() {
   ellipse(goal.x, goal.y, 10, 10);
 
   //draw obstacle(s)
-  fill(0, 0, 255);
-
-  rect(0, 300, 600, 10);
-
-
+  walls.showWalls();
+  
+  
   if (test.allDotsDead()) {
     //genetic algorithm
     test.calculateFitness();
@@ -29,7 +28,12 @@ void draw() {
     test.mutateDemBabies();
   } else {
     //if any of the dots are still alive then update and then show them
-
+    
+    for(int i = 0; i < test.dots.length; i++){
+      if(walls.checkIfHit(test.dots[i])){
+        test.dots[i].dead = true;
+      }
+    }
     test.update();
     test.show();
   }
