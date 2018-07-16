@@ -1,6 +1,7 @@
 class Wall {
   
   public float x, y, h, w;
+  int totalDotsKilled = 0;
   Wall(float x, float y, float w, float h) {
     this.x = x;
     this.y = y;

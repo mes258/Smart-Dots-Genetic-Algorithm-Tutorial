@@ -17,7 +17,7 @@ class Walls {
   boolean checkIfHit(Dot d){
     boolean hit = false;
     for(int i = 0; i < walls.length; i++){
-      if(hitWall(d, walls[i])){
+      if(hitWall(d, i)){
         hit = true;
       }
     }
@@ -25,12 +25,15 @@ class Walls {
   }
   //x,y,w,h
   //0, 300, 600, 10
-  boolean hitWall(Dot d, Wall w){
+  boolean hitWall(Dot d, int i){
+    Wall w = walls[i];
     float dx = d.pos.x;
     float dy = d.pos.y;
-    
-    if(dx > w.x-2 && dx < w.x+w.w+2 && dy > w.y-2 && dy < w.y+w.h+2){
-      return true;
+    if (d.dead == false){
+      if(dx > w.x-2 && dx < w.x+w.w+2 && dy > w.y-2 && dy < w.y+w.h+2){
+        walls[i].totalDotsKilled++;
+        return true;
+      }
     }
     return false;
   }
@@ -40,6 +43,13 @@ class Walls {
       walls[i].show();
     }
   }
+  
+  void showDotsKilled(){
+    for(int i = 0; i< walls.length; i++){
+      text("Total Dots Killed: " + walls[i].totalDotsKilled, walls[i].x + 10, walls[i].y - 10);
+    }
+  }
+    
 
 
   //-----------------------------------------------------------------------------------------------------------------
