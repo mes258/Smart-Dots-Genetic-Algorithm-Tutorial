@@ -6,8 +6,8 @@ int generation = 1;
 void setup() {
   size(800, 800); //size of the window
   frameRate(200);//increase this to make the dots go faster
-  test = new Population(10000);//create a new population with 1000 members
-  walls = new Walls(100);
+  test = new Population(2000);//create a new population with 1000 members
+  walls = new Walls(50);
 }
 
   int index = 0;

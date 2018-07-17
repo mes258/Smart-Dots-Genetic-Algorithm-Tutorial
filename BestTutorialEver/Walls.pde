@@ -15,9 +15,9 @@ class Walls {
       float tall = random(2);
       if(tall > 1){
         w = random(30, 35);
-        h = random(50, 70);
+        h = random(50, 200);
       }else{
-        w = random(50, 70);
+        w = random(50, 200);
         h = random(14, 20);
       }
       
@@ -82,7 +82,7 @@ class Walls {
         walls[i].totalDotsKilled++;
         totalKilled++;
         killedThisGen++;
-        if(walls[i].totalDotsKilled > 100){
+        if(walls[i].totalDotsKilled >= 1000){
           walls[i].x = random(50,700); 
           walls[i].y = random(50,600);
           walls[i].totalDotsKilled = 0;
