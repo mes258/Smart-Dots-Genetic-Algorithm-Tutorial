@@ -6,8 +6,8 @@ int generation = 1;
 void setup() {
   size(800, 800); //size of the window
   frameRate(200);//increase this to make the dots go faster
-  test = new Population(2000);//create a new population with 1000 members
-  walls = new Walls(10);
+  test = new Population(10000);//create a new population with 1000 members
+  walls = new Walls(100);
 }
 
   int index = 0;
@@ -21,8 +21,8 @@ void draw() {
   //draw obstacle(s)
   walls.showWalls();
   walls.showDotsKilled();
-  
-  text("Generation: " + generation, 10, 10);
+  text("generation: " +generation, 10, 10);
+  walls.showTotalKilled();
   
   if (test.allDotsDead()) {
     //genetic algorithm
@@ -30,6 +30,7 @@ void draw() {
     test.naturalSelection();
     test.mutateDemBabies();
     generation++;
+    walls.updateEndOfRound(generation);
   } else {
     //if any of the dots are still alive then update and then show them
     
